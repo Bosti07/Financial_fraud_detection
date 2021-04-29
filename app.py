@@ -236,7 +236,7 @@ def main():
 	                   st.write('Confusion Matrix: ', cm_lgb_clf)
 
 
-	                   result = pd.DataFrame({'transaction id':X_test['transaction id'],'actual':y_test['isFraud'], 'predicted':test_pred})
+	                   result = pd.DataFrame({'transaction id':X_test['transaction_id'],'actual':y_test['isFraud'], 'predicted':test_pred})
 	                   result['predicted'].replace({0: 'Genuine', 1: 'Fraud'}, inplace=True)
 	                   st.write(result[result['actual']==1].head(10))
 
@@ -312,7 +312,7 @@ def main():
 	                  
 
 
-	                   result = pd.DataFrame({'transaction id':X_test['transaction id'],'actual':y_test['isFraud'], 'predicted':test_pred})
+	                   result = pd.DataFrame({'transaction id':X_test['transaction_id'],'actual':y_test['isFraud'], 'predicted':test_pred})
 	                   result['predicted'].replace({0: 'Genuine', 1: 'Fraud'}, inplace=True)
 	                   st.write(result[result['actual']==1].head(10))
 
@@ -393,7 +393,7 @@ def main():
 
 	                  
 
-	                   result = pd.DataFrame({'transaction_id':X_test['transaction id'],'actual':y_test['isFraud'], 'predicted':test_pred})
+	                   result = pd.DataFrame({'transaction_id':X_test['transaction_id'],'actual':y_test['isFraud'], 'predicted':test_pred})
 	                   result['predicted'].replace({0: 'Genuine', 1: 'Fraud'}, inplace=True)
 	                   st.write(result[result['actual']==1].head(10))
 	                  # st.write(result[result['actual']==1].head(10))
