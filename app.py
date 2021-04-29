@@ -418,6 +418,7 @@ def main():
                 df1 = pd.read_csv(uploaded_file)
                 #df1['transaction_id'] = [(uuid.uuid4()).int & (1<<32)-1 for _ in range(len(df1.index))]
                 #input_df.head(10)
+		st.subheader("Original Data")
                 st.write(df1.head(10)) 
                 st.write(df1.shape)
 
@@ -429,7 +430,7 @@ def main():
                    df1['balancediffDest'] = df1['newbalanceDest'] - df1['oldbalanceDest']
                    df1[['step','amount','oldbalanceOrg', 'oldbalanceDest', 'newbalanceOrig', 'newbalanceDest', 'balancediffOrig', 'balancediffDest']] = StandardScaler().fit_transform(df1[['step','amount','oldbalanceOrg','oldbalanceDest','newbalanceOrig','newbalanceDest','balancediffOrig','balancediffDest']])
 
-
+                   
                    df1.head(10)
 #df['transaction_id'].astype('int128')
                    features = ['step',
