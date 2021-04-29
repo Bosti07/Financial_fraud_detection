@@ -462,9 +462,7 @@ def main():
                    #st.write(result[result['actual']==1].head(10))
                    fraud = len(result[result['predicted']=='Fraud'])
                    st.warning('Number of fraud transactions are {}'.format(fraud))
-			
-		   test_acc = roc_auc_score(df1['isFraud'], prediction)
-
+                   test_acc = roc_auc_score(df1['isFraud'], prediction)
                    st.write("Accuracy: ", test_acc*100 )	
                    #if st.button('Download Dataframe as CSV'):
                    tmp_download_link = download_link(result[result['predicted']=='Fraud'], '.csv', 'Click here to download the result')
