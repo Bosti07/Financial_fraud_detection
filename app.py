@@ -417,8 +417,8 @@ def main():
             try:
                 df1 = pd.read_csv(uploaded_file)
                 #df1['transaction_id'] = [(uuid.uuid4()).int & (1<<32)-1 for _ in range(len(df1.index))]
-                #input_df.head(10)
-		st.subheader("Original Data")
+                #input_df.head(10)             
+                st.subheader("Original Data")
                 st.write(df1.head(10)) 
                 st.write(df1.shape)
 
