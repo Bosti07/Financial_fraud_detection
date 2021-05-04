@@ -382,7 +382,7 @@ def main():
 
 	                   result = pd.DataFrame({'transaction_id':df2['transaction_id'], 'predicted':prediction})
 	                   result['predicted'].replace({0: 'Genuine', 1: 'Fraud'}, inplace=True)
-                           st.subheader("Result")
+                           #st.subheader("Result")
 	                   st.write(result[result['predicted']=="Fraud"].head(100))
 	                   #result[result['predicted']=="Fraud"].to_csv('Fraud_result.csv', index=False)
 	                   #st.write(result[result['actual']==1].head(10))
