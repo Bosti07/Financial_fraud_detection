@@ -82,6 +82,7 @@ def main():
                 
                 input_df = pd.read_csv(uploaded_file)
                 #input_df.head(10)
+                input_df.drop(['isFlaggedFraud'], inplace = True, axis=1)
                 st.subheader("Original Data")
                 st.write(input_df.head(10)) 
                 st.write(input_df.shape)
@@ -144,7 +145,7 @@ def main():
 		                #Model Prediction 
 		                   #warnings.filterwarnings("ignore")
 		                   train_pred = lgb_clf.predict(X_train_smote)
-		                   test_pred = (lgb_clf.predict_proba(X_test)[:,1] >= 0.902).astype(int)
+		                   test_pred = (lgb_clf.predict_proba(X_test)[:,1] >= 0.8).astype(int)
 		                 
 		                   #Evaluate
 		                   st.write('Train Accuracy')
@@ -299,7 +300,7 @@ def main():
 		                
 
 		                   train_pred = xgb_clf.predict(X_train_smote)
-		                   test_pred = (xgb_clf.predict_proba(X_test)[:,1] >= 0.902).astype(int)
+		                   test_pred = (xgb_clf.predict_proba(X_test)[:,1] >= 0.8).astype(int)
 		                 
 
 		                   #Evaluate
@@ -342,6 +343,7 @@ def main():
                 df1 = pd.read_csv(uploaded_file)
                 #df1['transaction_id'] = [(uuid.uuid4()).int & (1<<32)-1 for _ in range(len(df1.index))]
                 #input_df.head(10)
+                df1.drop(['isFraud', 'isFlaggedFraud'], inplace = True, axis=1)
                 st.subheader("Original Data")
                 st.write(df1.head(10)) 
                 st.write(df1.shape)
@@ -368,21 +370,21 @@ def main():
 	                                'transaction_id',
 	                                'balancediffOrig',
 	                                'balancediffDest',
-	                                'isFraud'
+	                                #'isFraud'
 	            #'merchant'
 	                                 ] 
 	                   df2 = df1[features]
 	                   # After encoding (scroll right to see new columns)
-	                   df2 = df2.join(pd.get_dummies(df2[['type']], prefix='type')).drop(['type', 'isFraud'], axis=1)
+	                   df2 = df2.join(pd.get_dummies(df2[['type']], prefix='type')).drop(['type'], axis=1)
 	                   
 
 	                   predictor = load_prediction_models("model/xgb_clf_model.pkl")
 	                   #prediction = predictor.predict(df2)
-	                   prediction = (predictor.predict_proba(df2)[:,1] >= 0.63).astype(int)
+	                   prediction = (predictor.predict_proba(df2)[:,1] >= 0.6333).astype(int)
 
 	                   result = pd.DataFrame({'transaction_id':df2['transaction_id'], 'predicted':prediction})
 	                   result['predicted'].replace({0: 'Genuine', 1: 'Fraud'}, inplace=True)
-                           #st.subheader("Result")
+	                   st.subheader("Results")
 	                   st.write(result[result['predicted']=="Fraud"].head(100))
 	                   #result[result['predicted']=="Fraud"].to_csv('Fraud_result.csv', index=False)
 	                   #st.write(result[result['actual']==1].head(10))
@@ -435,7 +437,7 @@ def main():
                   #    ax = sns.boxplot(input_df["amount"])    
                   #    st.pyplot(fig)
        
-              
+
                 #if st.sidebar.button("View Line Chart"): 
                 #Distribution of the frequency of all transactions
                    # fig = plt.figure(figsize=(10, 3))
