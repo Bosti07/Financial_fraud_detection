@@ -342,7 +342,7 @@ def main():
                 df1 = pd.read_csv(uploaded_file)
                 #df1['transaction_id'] = [(uuid.uuid4()).int & (1<<32)-1 for _ in range(len(df1.index))]
                 #input_df.head(10)
-                st.write("Original Data")
+                st.subheader("Original Data")
                 st.write(df1.head(10)) 
                 st.write(df1.shape)
 
@@ -382,6 +382,7 @@ def main():
 
 	                   result = pd.DataFrame({'transaction_id':df2['transaction_id'], 'predicted':prediction})
 	                   result['predicted'].replace({0: 'Genuine', 1: 'Fraud'}, inplace=True)
+                           st.subheader("Result")
 	                   st.write(result[result['predicted']=="Fraud"].head(100))
 	                   #result[result['predicted']=="Fraud"].to_csv('Fraud_result.csv', index=False)
 	                   #st.write(result[result['actual']==1].head(10))
