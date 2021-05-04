@@ -435,7 +435,7 @@ def main():
                   #    ax = sns.boxplot(input_df["amount"])    
                   #    st.pyplot(fig)
        
-
+              
                 #if st.sidebar.button("View Line Chart"): 
                 #Distribution of the frequency of all transactions
                    # fig = plt.figure(figsize=(10, 3))
