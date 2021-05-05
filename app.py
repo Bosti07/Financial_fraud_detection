@@ -39,7 +39,7 @@ warnings.filterwarnings("ignore")
 
 #global X_test, X_train, y_test, y_train, X, y, input_df
 
-
+@st.cache(ttl=100)
 def download_link(object_to_download, download_filename, download_link_text):
    
     if isinstance(object_to_download,pd.DataFrame):
