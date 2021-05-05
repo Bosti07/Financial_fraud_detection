@@ -1,18 +1,18 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import uuid
-import time
+#import uuid
+#import time
 import os
 import base64
 
-import random
+#import random
 import seaborn as sns #for visualization
 import matplotlib.pyplot as plt #for visualization
 from termcolor import colored as cl # text customization
 import itertools # advanced tools
 
-from sklearn.decomposition import PCA
+#from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler # data normalization
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import roc_auc_score, accuracy_score
@@ -25,7 +25,7 @@ from imblearn.over_sampling import SMOTE
                #model#
 ###################################################
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.tree import DecisionTreeClassifier
+#from sklearn.tree import DecisionTreeClassifier
 
 import lightgbm as lgb 
 from lightgbm import LGBMClassifier
