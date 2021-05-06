@@ -23,3 +23,9 @@ font = "sans serif"
 # Max size, in megabytes, for files uploaded with the file_uploader.
 # Default: 200
 maxUploadSize = 100
+
+[client]
+
+# Whether to enable st.cache.
+# Default: true
+caching = true
