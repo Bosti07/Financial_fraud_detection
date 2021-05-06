@@ -56,7 +56,7 @@ def load_prediction_models(model_file):
     return loaded_model
 
 
-@st.cache(suppress_st_warning=True,ttl=600)
+#@st.cache(suppress_st_warning=True,ttl=600)
 def main():
     st.title("""
     Financial Fraud Detection Web App 
