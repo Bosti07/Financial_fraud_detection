@@ -38,6 +38,12 @@ import warnings
 warnings.filterwarnings("ignore")
 
 #global X_test, X_train, y_test, y_train, X, y, input_df
+hide_streamlit_style = """
+                           <style>
+                           #MainMenu {visibility: hidden;}
+                           footer {visibility: hidden;}
+                           </style>"""
+st.markdown(hide_streamlit_style, unsafe_allow_html = True) 
 
 @st.cache(ttl=100)
 def download_link(object_to_download, download_filename, download_link_text):
