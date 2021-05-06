@@ -18,6 +18,8 @@ textColor = "#6e7074" # grey
 # Default: "sans serif"
 font = "sans serif"
 
+[server]
+
 # Max size, in megabytes, for files uploaded with the file_uploader.
 # Default: 200
 maxUploadSize = 100
