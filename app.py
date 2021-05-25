@@ -150,13 +150,13 @@ def main():
 
 		                #Model Prediction 
 		                   #warnings.filterwarnings("ignore")
-		                   train_pred = lgb_clf.predict(X_train_smote)
+		                   #train_pred = lgb_clf.predict(X_train_smote)
 		                   test_pred = (lgb_clf.predict_proba(X_test)[:,1] >= 0.8).astype(int)
 		                 
 		                   #Evaluate
-		                   st.write('Train Accuracy')
-		                   train_acc = roc_auc_score(y_train_smote, train_pred)	                   
-		                   st.write('Accuracy:  {:.4}%'.format(train_acc*100))
+		                   #st.write('Train Accuracy')
+		                   #train_acc = roc_auc_score(y_train_smote, train_pred)	                   
+		                   #st.write('Accuracy:  {:.4}%'.format(train_acc*100))
 		                   st.write('Test Accuracy')
 		                   test_acc = roc_auc_score(y_test, test_pred)
 		                   st.write("Accuracy:  {:.4}%".format(test_acc*100))
@@ -222,15 +222,15 @@ def main():
 		                #Model Prediction
 
 		                   #print(rf_clf)
-		                   train_pred = rf_clf.predict(X_train_smote)
+		                   #train_pred = rf_clf.predict(X_train_smote)
 		                   test_pred = (rf_clf.predict_proba(X_test)[:,1] >= 0.8).astype(int)
 		                   #test_pred = (xgb_clf.predict_proba(X_test)[:,1] >= 0.8).astype(int)
 		                 
 
 		                   #Evaluate
-		                   st.write('Train Accuracy')
-		                   train_acc = roc_auc_score(y_train_smote, train_pred)	                   
-		                   st.write('Accuracy:  {:.4}%'.format(train_acc*100))
+		                   #st.write('Train Accuracy')
+		                   #train_acc = roc_auc_score(y_train_smote, train_pred)	                   
+		                   #st.write('Accuracy:  {:.4}%'.format(train_acc*100))
 		                   st.write('Test Accuracy')
 		                   test_acc = roc_auc_score(y_test, test_pred)
 		                   st.write('Accuracy:  {:.4}%'.format(test_acc*100))
@@ -305,14 +305,14 @@ def main():
 
 		                
 
-		                   train_pred = xgb_clf.predict(X_train_smote)
+		                   #train_pred = xgb_clf.predict(X_train_smote)
 		                   test_pred = (xgb_clf.predict_proba(X_test)[:,1] >= 0.8).astype(int)
 		                 
 
 		                   #Evaluate
-		                   st.write('Train Accuracy')
-		                   train_acc = roc_auc_score(y_train_smote, train_pred)	                   
-		                   st.write('Accuracy:  {:.4}%'.format(train_acc*100))
+		                   #st.write('Train Accuracy')
+		                   #train_acc = roc_auc_score(y_train_smote, train_pred)	                   
+		                   #st.write('Accuracy:  {:.4}%'.format(train_acc*100))
 		                   st.write('Test Accuracy')
 		                   test_acc = roc_auc_score(y_test, test_pred)
 		                   st.write('Accuracy:  {:.4}%'.format(test_acc*100))
