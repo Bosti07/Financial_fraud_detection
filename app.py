@@ -162,8 +162,8 @@ def main():
 		                   st.write("Accuracy:  {:.4}%".format(test_acc*100))
 		                   #st.error('Number of fraud transactions are {}'.format(fraud)) 
 		                   cm_lgb_clf = confusion_matrix(y_test, test_pred)
-		                   st.write('Confusion Matrix: ', cm_lgb_clf)
-                                   #st.subheader("Results")
+		                   st.write('Confusion Matrix: ', cm_lgb_clf) 
+		                   st.subheader("Results")
 		                   result = pd.DataFrame({'transaction_id':X_test['transaction_id'],'actual':y_test['isFraud'], 'predicted':test_pred})
 		                   result['predicted'].replace({0: 'Genuine', 1: 'Fraud'}, inplace=True)
 		                   st.write(result[result['actual']==1].head(10))
@@ -238,9 +238,7 @@ def main():
 
 		                   #cm_rf_train_clf = confusion_matrix(y_train_smote, train_pred)
 		                   #st.write('Confusion Matrix in training set: ', cm_rf_train_clf)
-		                  
-
-                                   st.subheader("Results")
+		                   st.subheader("Results")
 		                   result = pd.DataFrame({'transaction_id':X_test['transaction_id'],'actual':y_test['isFraud'], 'predicted':test_pred})
 		                   result['predicted'].replace({0: 'Genuine', 1: 'Fraud'}, inplace=True)
 		                   st.write(result[result['actual']==1].head(10))
@@ -306,7 +304,7 @@ def main():
 
 		                   #train_pred = xgb_clf.predict(X_train_smote)
 		                   test_pred = (xgb_clf.predict_proba(X_test)[:,1] >= 0.8).astype(int)
-#tae		                 
+		                 
 
 		                   #Evaluate
 		                   #st.write('Train Accuracy')
@@ -321,8 +319,7 @@ def main():
 		                   #cm_xgb_train_clf = confusion_matrix(y_train_smote, train_pred)
 		                   #st.write('Confusion Matrix in training set: ', cm_xgb_train_clf)
 
-		                  
-                                   st.subheader("Results")
+		                   st.subheader("Results")
 		                   result = pd.DataFrame({'transaction_id':X_test['transaction_id'],'actual':y_test['isFraud'], 'predicted':test_pred})
 		                   result['predicted'].replace({0: 'Genuine', 1: 'Fraud'}, inplace=True)
 		                   st.write(result[result['actual']==1].head(10))
