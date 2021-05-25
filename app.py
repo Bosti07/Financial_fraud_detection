@@ -90,7 +90,7 @@ def main():
                 #input_df.head(10)
                 input_df.drop(['isFlaggedFraud'], inplace = True, axis=1)
                 st.subheader("Original Data")
-                st.write(input_df.head(10)) 
+                st.table(input_df.head(10)) 
                 st.write(input_df.shape)
 
                 
