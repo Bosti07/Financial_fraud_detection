@@ -163,7 +163,7 @@ def main():
 		                   #st.error('Number of fraud transactions are {}'.format(fraud)) 
 		                   cm_lgb_clf = confusion_matrix(y_test, test_pred)
 		                   st.write('Confusion Matrix: ', cm_lgb_clf)
-                                   st.subheader("Results")
+                                   #st.subheader("Results")
 		                   result = pd.DataFrame({'transaction_id':X_test['transaction_id'],'actual':y_test['isFraud'], 'predicted':test_pred})
 		                   result['predicted'].replace({0: 'Genuine', 1: 'Fraud'}, inplace=True)
 		                   st.write(result[result['actual']==1].head(10))
