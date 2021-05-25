@@ -164,7 +164,7 @@ def main():
 		                   cm_lgb_clf = confusion_matrix(y_test, test_pred)
 		                   st.write('Confusion Matrix: ', cm_lgb_clf)
 
-
+                                   st.subheader("Results")
 		                   result = pd.DataFrame({'transaction_id':X_test['transaction_id'],'actual':y_test['isFraud'], 'predicted':test_pred})
 		                   result['predicted'].replace({0: 'Genuine', 1: 'Fraud'}, inplace=True)
 		                   st.write(result[result['actual']==1].head(10))
@@ -241,7 +241,7 @@ def main():
 		                   #st.write('Confusion Matrix in training set: ', cm_rf_train_clf)
 		                  
 
-
+                                   st.subheader("Results")
 		                   result = pd.DataFrame({'transaction_id':X_test['transaction_id'],'actual':y_test['isFraud'], 'predicted':test_pred})
 		                   result['predicted'].replace({0: 'Genuine', 1: 'Fraud'}, inplace=True)
 		                   st.write(result[result['actual']==1].head(10))
@@ -323,7 +323,7 @@ def main():
 		                   #st.write('Confusion Matrix in training set: ', cm_xgb_train_clf)
 
 		                  
-
+                                   st.subheader("Results")
 		                   result = pd.DataFrame({'transaction_id':X_test['transaction_id'],'actual':y_test['isFraud'], 'predicted':test_pred})
 		                   result['predicted'].replace({0: 'Genuine', 1: 'Fraud'}, inplace=True)
 		                   st.write(result[result['actual']==1].head(10))
