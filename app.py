@@ -338,8 +338,8 @@ def main():
 
 		                   model = XGBClassifier(  random_state = 1,
                         						   learning_rate = 0.05, 
-                                                   max_depth = 5,
-                        						   n_estimators = 100, 
+                                                   			   max_depth = 5,
+                        						   n_estimators = 300, 
                         						   colsample_bytree = 0.7, 
                         							gamma = 0.0,
                         						   )
