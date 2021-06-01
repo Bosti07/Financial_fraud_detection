@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-#import uuid
+import uuid
 import time
 import os
 import base64
@@ -37,28 +37,15 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-
 hide_streamlit_style = """
                            <style>
                            #MainMenu {visibility: hidden;}
                            footer {visibility: hidden;}
-                           footer: after {
-                                           content:'Goodbye';
-                                           visibility: visible;
-                                           display: block;
-                                           position: relative;
-                                           #background-color: red;
-                                           padding: 5px;
-                                           top: 2px;
-                                          }
-                           </style>"""
-st.markdown(hide_streamlit_style, unsafe_allow_html = True) 
+                           </style>
+                       """
+st.markdown(hide_streamlit_style, unsafe_allow_html = True)
 
-
-#def process():
-
-#@st.cache(suppress_st_warning=True,allow_output_mutation=True, ttl=660)	
-
+	
 
 def download_link(object_to_download, download_filename, download_link_text):
    
@@ -78,14 +65,14 @@ def load_prediction_models(model_file):
 
 
 def main():
-    st.title("""
-        Fraud Detection Web App 
+    st.title(""" 
+        Fraud Detection Web App :credit_card: 🕵️‍♂️
     """)
 
-    st.sidebar.header('Home')
+    st.sidebar.header('Home🏠')
     menu = ["Home","Train and Test", "Make Prediction"]
     choice = st.sidebar.selectbox("Menu",menu)
-    optional = st.sidebar.beta_expander("Variables Need", False)
+    optional = st.sidebar.beta_expander(" ⚠️ Variables Need ⚠️", False)
     optional.write("step")
     optional.write("type")
     optional.write("amount")
@@ -97,6 +84,7 @@ def main():
     optional.write("newbalanceDest")
     optional.write("transaction_id")
     optional.write("isFraud")
+    optional.warning(" ⚠️ All the column names must be the same on variables need.")
     
     @st.cache(persist = True, allow_output_mutation=True)
     def read_file(uploaded_file):
@@ -108,11 +96,11 @@ def main():
 
 
     	if 'Confustion Matrix' in metrics_list:
-    		st.subheader("Confusion Matrix")
+    		st.subheader("Confusion Matrix ")
     		plot_confusion_matrix(model, X_test, y_test, display_labels= class_names)
     		st.pyplot() 
-    	if 'ROC Curve' in metrics_list:
-        # 'ROC Curve' in metrics_list:
+    	if 'ROC Curve ' in metrics_list:
+        
             
             st.subheader("ROC Curve")
             plot_roc_curve(model, X_test, y_test)
@@ -146,10 +134,9 @@ def main():
 
                 
                 if classifier=='LightGBM':
-                	metrics = st.sidebar.multiselect("What metrics to plot?",('Confustion Matrix', 'ROC Curve'))
-                	if st.sidebar.button("Evaluate"):
+                	metrics = st.sidebar.multiselect("What metrics to plot? 📊",('Confustion Matrix', 'ROC Curve'))
+                	if st.sidebar.button("Evaluate 👨‍🔬"):
                 		with st.spinner("Please wait while the process is ongoing."):
-		                   #input_df['transaction id'] = [(uuid.uuid4()).int & (1<<32)-1 for _ in range(len(input_df.index))] 	
 		                   input_df[['step','amount','oldBalanceOrig', 'oldBalanceDest', 'newBalanceOrig', 'newBalanceDest']] = StandardScaler().fit_transform(input_df[['step','amount','oldBalanceOrig','oldBalanceDest','newBalanceOrig','newBalanceDest']])
 
 		                   features = ['step',
@@ -178,11 +165,10 @@ def main():
 		                   X_train_smote, y_train_smote = sm.fit_sample(X_train, y_train)
 
 
-		                   #print(pd.Series(y_SMOTE).value_counts())
-		                   #X_train, X_test, y_train, y_test = train_test_split(X_SMOTE, y_SMOTE, random_state=0)
-		                   st.subheader("Pre-processed Data")
-		                   st.write(X.head(10))
-		                   st.write(input_df.shape)
+		                   
+		                   #st.subheader("Pre-processed Data")
+		                   #st.write(X.head(10))
+		                   #st.write(input_df.shape)
 
 		                   
 		                #Model fitting
@@ -192,22 +178,14 @@ def main():
 		                   
 		                   
 
-		                #Model Prediction 
-		                   #warnings.filterwarnings("ignore")
-		                   #train_pred = lgb_clf.predict(X_train_smote)
+		                #Model Prediction
 		                   test_pred = (model.predict_proba(X_test)[:,1] >= 0.5).astype(int)
 		                 
 		                   #Evaluate
-		                   #st.write('Train Accuracy')
-		                   #train_acc = roc_auc_score(y_train_smote, train_pred)	                   
-		                   #st.write('Accuracy:  {:.4}%'.format(train_acc*100))
 		                   st.write('Test Accuracy')
 		                   test_acc = roc_auc_score(y_test, test_pred)
-		                   #st.write("Accuracy:  {:.4}%".format(test_acc*100))
 		                   st.write("Accuracy:  ", test_acc.round(3))
-		                   #st.error('Number of fraud transactions are {}'.format(fraud)) 
-		                   #cm_lgb_clf = confusion_matrix(y_test, test_pred)
-		                   #st.write('Confusion Matrix: ', cm_lgb_clf)
+		                  
 		                   
 		                   st.subheader("RESULTS:")
 		                   result = pd.DataFrame({'transaction_id':X_test['transaction_id'],'actual':y_test['isFraud'], 'predicted':test_pred})
@@ -217,12 +195,10 @@ def main():
 
 
                 if classifier=='Random Forest':
-                	metrics = st.sidebar.multiselect("What metrics to plot?",('Confustion Matrix', 'ROC Curve'))
-                	if st.sidebar.button("Evaluate"):
+                	metrics = st.sidebar.multiselect("What metrics to plot? 📊",('Confustion Matrix', 'ROC Curve'))
+                	if st.sidebar.button("Evaluate 👨‍🔬"):
                 		with st.spinner("Please wait while the process is ongoing."):
-		                   #input_df['transaction id'] = [(uuid.uuid4()).int & (1<<32)-1 for _ in range(len(input_df.index))] 	
-		                   #input_df['balancediffOrig'] = input_df['newbalanceOrig'] - input_df['oldbalanceOrg']
-		                   #input_df['balancediffDest'] = input_df['newbalanceDest'] - input_df['oldbalanceDest']
+
 		                   input_df[['step','amount','oldBalanceOrig', 'oldBalanceDest', 'newBalanceOrig', 'newBalanceDest']] = StandardScaler().fit_transform(input_df[['step','amount','oldBalanceOrig','oldBalanceDest','newBalanceOrig','newBalanceDest']])
 
 		                   features = ['step',
@@ -247,17 +223,13 @@ def main():
 		                   print(y_test.shape)
 
 		                   #SMOTE for balancing data
-		                   #X_SMOTE, y_SMOTE = SMOTE().fit_sample(X_train, y_train)
+		                  
 		                   sm = SMOTE(random_state = 1)
 		                   X_train_smote, y_train_smote = sm.fit_sample(X_train, y_train)
-		                   st.subheader("Pre-processed Data")
+		                   #st.subheader("Pre-processed Data")
 
-
-		                   #print(pd.Series(y_SMOTE).value_counts())
-		                   #X_train, X_test, y_train, y_test = train_test_split(X_SMOTE, y_SMOTE, random_state=0)
-
-		                   st.write(X.head(10))
-		                   st.write(input_df.shape)
+		                   #st.write(X.head(10))
+		                   #st.write(input_df.shape)
 		                #Model fitting
 		                   model = RandomForestClassifier()
 
@@ -266,36 +238,25 @@ def main():
 
 		                #Model Prediction
 
-		                   #print(rf_clf)
-		                   #train_pred = rf_clf.predict(X_train_smote)
 		                   test_pred = (model.predict_proba(X_test)[:,1] >= 0.5).astype(int)
-		                   #test_pred = (xgb_clf.predict_proba(X_test)[:,1] >= 0.8).astype(int)
 		                 
-
 		                   #Evaluate
-		                   #st.write('Train Accuracy')
-		                   #train_acc = roc_auc_score(y_train_smote, train_pred)	                   
-		                   #st.write('Accuracy:  {:.4}%'.format(train_acc*100))
+
 		                   st.write('Test Accuracy')
 		                   test_acc = roc_auc_score(y_test, test_pred)
 		                   st.write("Accuracy:  ", test_acc.round(3))
-		                   #cm_rf_clf = confusion_matrix(y_test, test_pred)
-		                   #st.write('Confusion Matrix: ', cm_rf_clf)
 
-		                   #cm_rf_train_clf = confusion_matrix(y_train_smote, train_pred)
-		                   #st.write('Confusion Matrix in training set: ', cm_rf_train_clf)
 		                   st.subheader("RESULTS:")		                  
 		                   result = pd.DataFrame({'transaction_id':X_test['transaction_id'],'actual':y_test['isFraud'], 'predicted':test_pred})
 		                   result['predicted'].replace({0: 'Genuine', 1: 'Fraud'}, inplace=True)
 		                   st.write(result[result['actual']==1].head(10))
 		                   plot_metrics(metrics)
 
-		                   #st.write(result[result['actual']==1].head(10))
 
 
                 if classifier=='XGBoost':
-                	metrics = st.sidebar.multiselect("What metrics to plot?",('Confustion Matrix', 'ROC Curve'))
-                	if st.sidebar.button("Evaluate"):
+                	metrics = st.sidebar.multiselect("What metrics to plot? 📊",('Confustion Matrix', 'ROC Curve'))
+                	if st.sidebar.button("Evaluate 👨‍🔬"):
                 		with st.spinner("Please wait while the process is ongoing."):
 	               	
 		                  
@@ -328,9 +289,9 @@ def main():
 		                   #SMOTE for balancing data
 		                   sm = SMOTE(random_state = 1)
 		                   X_train_smote, y_train_smote = sm.fit_sample(X_train, y_train)
-		                   st.subheader("Pre-processed Data")
-		                   st.write(X.head(10))
-		                   st.write(input_df.shape)
+		                   #st.subheader("Pre-processed Data")
+		                   #st.write(X.head(10))
+		                   #st.write(input_df.shape)
 
 
 		                #Model fitting
@@ -338,10 +299,10 @@ def main():
 
 		                   model = XGBClassifier(  random_state = 1,
                         						   learning_rate = 0.05, 
-                                                   			   max_depth = 5,
+                                                   max_depth = 5,
                         						   n_estimators = 300, 
                         						   colsample_bytree = 0.7, 
-                        							gamma = 0.0,
+                        						   gamma = 0.0,
                         						   )
 
 		                   model = model.fit(X_train_smote, y_train_smote, eval_metric=["error", "logloss"])
@@ -349,23 +310,14 @@ def main():
 		                #Model Prediction
 
 		                
-
-		                   #train_pred = xgb_clf.predict(X_train_smote)
 		                   test_pred = model.predict_proba(X_test)[:,1] >= 0.8
 		                 
 
-		                   #Evaluate
-		                   #st.write('Train Accuracy')
-		                   #train_acc = roc_auc_score(y_train_smote, train_pred)	                   
-		                   #st.write('Accuracy:  {:.4}%'.format(train_acc*100))
+		            
 		                   st.write('Test Accuracy')
 		                   test_acc = roc_auc_score(y_test, test_pred)
 		                   st.write("Accuracy:  ", test_acc.round(3))
-		                   #cm_xgb_clf = confusion_matrix(y_test, test_pred)
-		                   #st.write('Confusion Matrix: ', cm_xgb_clf)
 
-		                   #cm_xgb_train_clf = confusion_matrix(y_train_smote, train_pred)
-		                   #st.write('Confusion Matrix in training set: ', cm_xgb_train_clf)
 		                   st.subheader("RESULTS:")
 
 		                   
@@ -381,7 +333,6 @@ def main():
                 print(e)                
     
     if choice == "Make Prediction":
-        #st.subheader("Summary of Exploratory Data Analysis Section")
 
         uploaded_file = st.sidebar.file_uploader(label="Upload your input CSV file", type=["csv"])
 
@@ -395,22 +346,13 @@ def main():
                 df1 = pd.read_csv(uploaded_file)
                 df1.drop(['isFraud', 'isFlaggedFraud'], inplace = True, axis=1)
                 st.subheader("Original Data")
-                #optional = st.beta_expander("Display a Sample Raw Data", False)
-                #st.subheader("Original Data")
-                st.write(df1.head(10)) 
-                #st.write(df1.shape)
-
+                st.dataframe(df1.head(10)) 
               
 
                 if st.sidebar.button("Predict"):
                 	with st.spinner("Please wait while the process is ongoing."):
                 		#filtering only transfer and cash_out data
                 	   df3=df1[df1['type'].isin(['TRANSFER','CASH_OUT'])]
-	                   #df1['transaction_id'] = [(uuid.uuid4()).int & (1<<32)-1 for _ in range(len(df1.index))]
-	                   #df1[['step','amount','oldBalanceOrig', 'oldBalanceDest', 'newBalanceOrig', 'newBalanceDest']] = StandardScaler().fit_transform(df1[['step','amount','oldBalanceOrig','oldBalanceDest','newBalanceOrig','newBalanceDest']])
-
-
-	                   #st.write(df3.head(10))
 	
 	                   features = ['step',
 	                                'type',
@@ -429,7 +371,6 @@ def main():
 
 	                   predictor = load_prediction_models("model/xgb_clf_model.pkl")
 	                   #prediction = predictor.predict(df2)
-	                   #prediction = predictor.predict_proba(df2)[:,1] >= 0.5
 	                   prediction = (predictor.predict_proba(df2)[:,1] >= 0.87).astype(int)
 
 	                   result = pd.DataFrame({'transaction_id':df2['transaction_id'], 'predicted':prediction})
@@ -443,19 +384,14 @@ def main():
 						""", unsafe_allow_html=True)
 	                   st.markdown('<p class="big-font">Results </p>', unsafe_allow_html=True)
 
-                       
-	                   #st.subheader("Results")
-	                   #optional = st.beta_expander("Display Sample Results", False)
-	                   st.write(result[result['predicted']=="Fraud"].head(100))
-	                   #result[result['predicted']=="Fraud"].to_csv('Fraud_result.csv', index=False)
-	                   #st.write(result[result['actual']==1].head(10))
+	                   st.dataframe(result[result['predicted']=="Fraud"].head(100))
+
 	                   fraud = len(result[result['predicted']=='Fraud'])
 	                   st.error('Number of fraud transactions are {}'.format(fraud))
-	                   #if st.button('Download Dataframe as CSV'):
+
 	                   tmp_download_link = download_link(result[result['predicted']=='Fraud'], 'Fraud_result.csv', 'Click here to download the result')
 	                   st.markdown(tmp_download_link, unsafe_allow_html=True)
-	                   #st.success('Your Fraud Results are already save.')
-	                #if st.button("Download file"):
+
 	                                         
 
 ##################### Result of predicting #############################
