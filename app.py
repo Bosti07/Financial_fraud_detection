@@ -382,8 +382,9 @@ def main():
 									</style>
 						""", unsafe_allow_html=True)
 	                   st.markdown('<p class="big-font">Results </p>', unsafe_allow_html=True)
+	                   optional = st.beta_expander("Display Results", False)
 
-	                   st.table(result[result['predicted']=="Fraud"].head(100))
+	                   optional.table(result[result['predicted']=="Fraud"].head(100))
 
 	                   fraud = len(result[result['predicted']=='Fraud'])
 	                   st.error('Number of fraud transactions are {}'.format(fraud))
