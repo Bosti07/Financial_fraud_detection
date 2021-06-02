@@ -99,7 +99,7 @@ def main():
     		st.subheader("Confusion Matrix ")
     		plot_confusion_matrix(model, X_test, y_test, display_labels= class_names)
     		st.pyplot() 
-    	if 'ROC Curve ' in metrics_list:
+    	if 'ROC Curve' in metrics_list:
         
             
             st.subheader("ROC Curve")
