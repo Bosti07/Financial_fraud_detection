@@ -100,8 +100,7 @@ def main():
     		plot_confusion_matrix(model, X_test, y_test, display_labels= class_names)
     		st.pyplot() 
     	if 'ROC Curve' in metrics_list:
-        
-            
+     
             st.subheader("ROC Curve")
             plot_roc_curve(model, X_test, y_test)
             st.pyplot()
@@ -190,7 +189,7 @@ def main():
 		                   st.subheader("RESULTS:")
 		                   result = pd.DataFrame({'transaction_id':X_test['transaction_id'],'actual':y_test['isFraud'], 'predicted':test_pred})
 		                   result['predicted'].replace({0: 'Genuine', 1: 'Fraud'}, inplace=True)
-		                   st.write(result[result['actual']==1].head(10))
+		                   st.table(result[result['actual']==1].head(10))
 		                   plot_metrics(metrics)
 
 
@@ -249,7 +248,7 @@ def main():
 		                   st.subheader("RESULTS:")		                  
 		                   result = pd.DataFrame({'transaction_id':X_test['transaction_id'],'actual':y_test['isFraud'], 'predicted':test_pred})
 		                   result['predicted'].replace({0: 'Genuine', 1: 'Fraud'}, inplace=True)
-		                   st.write(result[result['actual']==1].head(10))
+		                   st.table(result[result['actual']==1].head(10))
 		                   plot_metrics(metrics)
 
 
@@ -323,7 +322,7 @@ def main():
 		                   
 		                   result = pd.DataFrame({'transaction_id':X_test['transaction_id'],'actual':y_test['isFraud'], 'predicted':test_pred})
 		                   result['predicted'].replace({0: 'Genuine', 1: 'Fraud'}, inplace=True)
-		                   st.write(result[result['actual']==1].head(10))
+		                   st.table(result[result['actual']==1].head(10))
 		                   plot_metrics(metrics)
 		                  # st.write(result[result['actual']==1].head(10))
 	       
@@ -384,7 +383,7 @@ def main():
 						""", unsafe_allow_html=True)
 	                   st.markdown('<p class="big-font">Results </p>', unsafe_allow_html=True)
 
-	                   st.dataframe(result[result['predicted']=="Fraud"].head(100))
+	                   st.table(result[result['predicted']=="Fraud"].head(100))
 
 	                   fraud = len(result[result['predicted']=='Fraud'])
 	                   st.error('Number of fraud transactions are {}'.format(fraud))
