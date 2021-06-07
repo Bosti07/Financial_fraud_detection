@@ -125,7 +125,7 @@ def main():
                 input_df.drop(['isFlaggedFraud'], inplace = True, axis=1)
                 st.subheader("Original Data")
                 st.dataframe(input_df.head(10))
-		st.write("The Dataset has",input_df.shape[0], "row", "and",input_df.shape[1], "columns." )
+                st.write("The Dataset has",input_df.shape[0], "row", "and",input_df.shape[1], "columns." )
                 #st.write(input_df.shape)
 
                 
