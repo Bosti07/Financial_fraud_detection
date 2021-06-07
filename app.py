@@ -39,7 +39,7 @@ warnings.filterwarnings("ignore")
 
 hide_streamlit_style = """
                            <style>
-                           #MainMenu {visibility: hidden;}
+                          # #MainMenu {visibility: hidden;}
                            footer {visibility: hidden;}
                            </style>
                        """
