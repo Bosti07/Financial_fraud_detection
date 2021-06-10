@@ -371,7 +371,7 @@ def main():
 
 	                   predictor = load_prediction_models("model/xgb_clf_model.pkl")
 	                   #prediction = predictor.predict(df2)
-	                   prediction = (predictor.predict_proba(df2)[:,1] >= 0.87).astype(int)
+	                   prediction = (predictor.predict_proba(df2)[:,1] >= 0.5).astype(int)
 
 	                   result = pd.DataFrame({'transaction_id':df2['transaction_id'], 'predicted':prediction})
 	                   result['predicted'].replace({0: 'Genuine', 1: 'Fraud'}, inplace=True)
