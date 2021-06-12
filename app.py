@@ -90,7 +90,7 @@ def main():
     	st.write("")
 
     with col2:
-    	st.markdown("""<h2 style='text-align: center; color: Black;'>⚠️</h1>
+    	st.markdown("""<h2 style='text-align: center; color: White;'>⚠️</h1>
     		           <h1 style='text-align: center; color: White;'>Frapp</h1>""", unsafe_allow_html=True)
 
     with col3:
