@@ -2,7 +2,7 @@
 
 
  #primaryColor="#3872fb"
- backgroundColor="#0e1117"
+ #backgroundColor="#0e1117"
  #secondaryBackgroundColor="#31333F"
  textColor="#fafafa"
  font="sans serif"
