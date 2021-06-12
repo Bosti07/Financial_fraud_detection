@@ -148,7 +148,7 @@ def main():
         optional.write("oldBalanceOrig")
         optional.write("newBalanceOrig")
         optional.write("oldBalanceDest")
-        optional.write("newbalanceDest")
+        optional.write("newBalanceDest")
         optional.write("transaction_id")
         optional.write("isFraud(for train and test only)")
         optional.warning("All the columns must be followed accordingly or the system may not be able to produce appropriate results.")
@@ -183,7 +183,7 @@ def main():
                 if classifier=='LightGBM':
                 	
                 	metrics = st.sidebar.multiselect("What metrics to plot? 📊",('Confustion Matrix', 'ROC Curve'))
-                	if st.sidebar.button("Evaluate 👨‍🔬"):
+                	if st.sidebar.button("Start 👨‍🔬"):
                 		with st.spinner("Please wait while the process is ongoing."):
 		                   input_df[['step','amount','oldBalanceOrig', 'oldBalanceDest', 'newBalanceOrig', 'newBalanceDest']] = StandardScaler().fit_transform(input_df[['step','amount','oldBalanceOrig','oldBalanceDest','newBalanceOrig','newBalanceDest']])
 
@@ -244,7 +244,7 @@ def main():
 
                 if classifier=='Random Forest':
                 	metrics = st.sidebar.multiselect("What metrics to plot? 📊",('Confustion Matrix', 'ROC Curve'))
-                	if st.sidebar.button("Evaluate 👨‍🔬"):
+                	if st.sidebar.button("Start 👨‍🔬"):
                 		with st.spinner("Please wait while the process is ongoing."):
 
 		                   input_df[['step','amount','oldBalanceOrig', 'oldBalanceDest', 'newBalanceOrig', 'newBalanceDest']] = StandardScaler().fit_transform(input_df[['step','amount','oldBalanceOrig','oldBalanceDest','newBalanceOrig','newBalanceDest']])
@@ -304,7 +304,7 @@ def main():
 
                 if classifier=='XGBoost':
                 	metrics = st.sidebar.multiselect("What metrics to plot? 📊",('Confustion Matrix', 'ROC Curve'))
-                	if st.sidebar.button("Evaluate 👨‍🔬"):
+                	if st.sidebar.button("Start 👨‍🔬"):
                 		with st.spinner("Please wait while the process is ongoing."):
 	               	
 		                  
@@ -409,7 +409,7 @@ def main():
                 st.dataframe(df1.head(10)) 
               
 
-                if st.sidebar.button("Predict"):
+                if st.sidebar.button("Start"):
                 	with st.spinner("Please wait while the process is ongoing."):
                 		#filtering only transfer and cash_out data
                 	   df3=df1[df1['type'].isin(['TRANSFER','CASH_OUT'])]
