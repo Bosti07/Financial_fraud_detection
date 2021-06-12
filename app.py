@@ -97,7 +97,7 @@ def main():
     	#st.header('Frapp')
     	st.write("")
     #st.sidebar.write("Fraud Detection Web Application")
-    st.sidebar.markdown("<h4 style='color: Black;'>Fraud Detection Web Application</h4>", unsafe_allow_html=True)
+    st.sidebar.markdown("<h4 style='text-align: center; color: Black;'>Fraud Detection Web Application</h4>", unsafe_allow_html=True)
     #st.sidebar.header('Frapp')
     menu = ["Home","Train and Test", "Make Prediction"]
     choice = st.sidebar.selectbox("Menu",menu)
