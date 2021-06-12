@@ -66,7 +66,7 @@ def load_prediction_models(model_file):
 
 def main():
     st.title(""" 
-        **_Fraud Detection Web App_** :credit_card: 🕵️‍♂️
+        **_Frapp: Fraud Detection Web Application_** :credit_card: 🕵️‍♂️
     """)
 
     st.sidebar.header('Home🏠')
