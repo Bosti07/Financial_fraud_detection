@@ -42,7 +42,7 @@ hide_streamlit_style = """
                            #MainMenu {visibility: hidden;}
                            footer {visibility: hidden;}
                            </style>
-                       """
+                      """
 st.markdown(hide_streamlit_style, unsafe_allow_html = True)
 
 	
@@ -72,21 +72,8 @@ def main():
     st.sidebar.header('Home🏠')
     menu = ["Home","Train and Test", "Make Prediction"]
     choice = st.sidebar.selectbox("Menu",menu)
-    optional = st.sidebar.beta_expander(" ⚠️ Variables Need ⚠️", False)
-    optional.write("step")
-    optional.write("type")
-    optional.write("amount")
-    optional.write("nameOrig")
-    optional.write("nameDest")
-    optional.write("oldBalanceOrig")
-    optional.write("newBalanceOrig")
-    optional.write("oldBalanceDest")
-    optional.write("newbalanceDest")
-    optional.write("transaction_id")
-    optional.write("isFraud")
-    optional.warning(" ⚠️ All the column names must be the same on variables need.")
     
-    @st.cache(persist = True, allow_output_mutation=True)
+    @st.cache(allow_output_mutation=True, suppress_st_warning=True)
     def read_file(uploaded_file):
     
         return pd.read_csv(uploaded_file)
@@ -105,6 +92,24 @@ def main():
             plot_roc_curve(model, X_test, y_test)
             st.pyplot()
 
+    if choice == "Home":
+    	optional = st.sidebar.beta_expander(" ⚠️ Variables Need ⚠️", False)
+    	optional.write("step")
+    	optional.write("type")
+    	optional.write("amount")
+    	optional.write("nameOrig")
+    	optional.write("nameDest")
+    	optional.write("oldBalanceOrig")
+    	optional.write("newBalanceOrig")
+    	optional.write("oldBalanceDest")
+    	optional.write("newbalanceDest")
+    	optional.write("transaction_id")
+    	optional.write("isFraud")
+    	optional.warning(" ⚠️ All the column names must be the same on variables need.")
+
+
+        
+    
 
     class_names = ['Genuine', 'Fraud']
     if choice == "Train and Test":
@@ -122,11 +127,10 @@ def main():
                
                 #input_df = read_file(uploaded_file)
                 input_df = pd.read_csv(uploaded_file)
-                input_df.drop(['isFlaggedFraud'], inplace = True, axis=1)
+                input_df.drop(['isFlaggedFraud'], inplace = True, axis = 1)
                 st.subheader("Original Data")
-                st.dataframe(input_df.head(10))
-                st.write("The Dataset has",input_df.shape[0], "row", "and",input_df.shape[1], "columns." )
-                #st.write(input_df.shape)
+                st.dataframe(input_df.head(10)) 
+                st.write("The **_Dataset_** has",input_df.shape[0], "row", "and",input_df.shape[1], "columns." )
 
                 
                 alg=['Select a algorithm','LightGBM', 'Random Forest','XGBoost']
@@ -134,6 +138,7 @@ def main():
 
                 
                 if classifier=='LightGBM':
+                	
                 	metrics = st.sidebar.multiselect("What metrics to plot? 📊",('Confustion Matrix', 'ROC Curve'))
                 	if st.sidebar.button("Evaluate 👨‍🔬"):
                 		with st.spinner("Please wait while the process is ongoing."):
@@ -184,7 +189,7 @@ def main():
 		                   #Evaluate
 		                   st.write('Test Accuracy')
 		                   test_acc = roc_auc_score(y_test, test_pred)
-		                   st.write("Accuracy:  ", test_acc.round(3))
+		                   st.write("**_Accuracy_**:  ", test_acc.round(3))
 		                  
 		                   
 		                   st.subheader("RESULTS:")
@@ -244,7 +249,7 @@ def main():
 
 		                   st.write('Test Accuracy')
 		                   test_acc = roc_auc_score(y_test, test_pred)
-		                   st.write("Accuracy:  ", test_acc.round(3))
+		                   st.write("**_Accuracy_**:  ", test_acc.round(3))
 
 		                   st.subheader("RESULTS:")		                  
 		                   result = pd.DataFrame({'transaction_id':X_test['transaction_id'],'actual':y_test['isFraud'], 'predicted':test_pred})
@@ -316,7 +321,7 @@ def main():
 		            
 		                   st.write('Test Accuracy')
 		                   test_acc = roc_auc_score(y_test, test_pred)
-		                   st.write("Accuracy:  ", test_acc.round(3))
+		                   st.write("**_Accuracy_**:  ", test_acc.round(3))
 
 		                   st.subheader("RESULTS:")
 
