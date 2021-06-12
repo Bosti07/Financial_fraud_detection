@@ -90,14 +90,14 @@ def main():
     	st.write("")
 
     with col2:
-    	st.markdown("""<h2 style='text-align: center; color: White;'>⚠️</h1>
-    		           <h1 style='text-align: center; color: White;'>Frapp</h1>""", unsafe_allow_html=True)
+    	st.markdown("""<h2 style='text-align: center; color: Black;'>⚠️</h1>
+    		           <h1 style='text-align: center; color: Black;'>Frapp</h1>""", unsafe_allow_html=True)
 
     with col3:
     	#st.header('Frapp')
     	st.write("")
     #st.sidebar.write("Fraud Detection Web Application")
-    st.sidebar.markdown("<h4 style='color: White;'>Fraud Detection Web Application</h4>", unsafe_allow_html=True)
+    st.sidebar.markdown("<h4 style='color: Black;'>Fraud Detection Web Application</h4>", unsafe_allow_html=True)
     #st.sidebar.header('Frapp')
     menu = ["Home","Train and Test", "Make Prediction"]
     choice = st.sidebar.selectbox("Menu",menu)
@@ -122,14 +122,14 @@ def main():
             st.pyplot()
 
     if choice == "Home":
-    	st.markdown("""<h1 style='text-align: center; color: White;'>Welcome to Frapp</h1>
+    	st.markdown("""<h1 style='text-align: center; color: Black;'>Welcome to Frapp</h1>
     		<h1 style='text-align: center; '>🕵️‍♂️</h1>""", unsafe_allow_html=True)
     	st.markdown("Frapp is a fraud detection web application that offers to train and test and make predictions of your financial datasets. Imagine a platform making it easy for aspiring data scientists!", unsafe_allow_html=True)
     	print("Home")            
 
     class_names = ['Genuine', 'Fraud']
     if choice == "Train and Test":
-        st.markdown("""<h1 style='text-align: center; color: White;'>Train and test with Frapp!</h1>
+        st.markdown("""<h1 style='text-align: center; color: Black;'>Train and test with Frapp!</h1>
     		           <h1 style='text-align: center; '>🕵️‍♂️</h1>""", unsafe_allow_html=True)
         st.markdown("""<h4 style='text-align: left;'>1. Check the file requirements and modify first your variables.</h4>
         			   <h4 style='text-align: left;'>2. Upload your CSV file.</h4>
@@ -173,15 +173,14 @@ def main():
                 st.write("")
                 st.subheader("Original Data")
                 st.dataframe(input_df.head(10)) 
-                st.write("The Dataset has",input_df.shape[0], "row", "and",input_df.shape[1], "columns." )
+                st.write("The Dataset has",input_df.shape[0], "rows", "and",input_df.shape[1], "columns." )
 
                 
                 alg=['Select a algorithm','LightGBM', 'Random Forest','XGBoost']
                 classifier = st.sidebar.selectbox('Which algorithm', alg)
 
                 
-                if classifier=='LightGBM':
-                	
+                if classifier=='LightGBM':                	
                 	metrics = st.sidebar.multiselect("What metrics to plot? 📊",('Confustion Matrix', 'ROC Curve'))
                 	if st.sidebar.button("Start 👨‍🔬"):
                 		with st.spinner("Please wait while the process is ongoing."):
@@ -381,7 +380,7 @@ def main():
                 print(e)                
     
     if choice == "Make Prediction":
-        st.markdown("""<h1 style='text-align: center; color: White;'>Predict fraud with Frapp!</h1>
+        st.markdown("""<h1 style='text-align: center; color: Black;'>Predict fraud with Frapp!</h1>
     		           <h1 style='text-align: center; '>🕵️‍♂️</h1>""", unsafe_allow_html=True)
 
         st.markdown("""<h4 style='text-align: left;'>1. Check the file requirements and modify first your variables.</h4>
