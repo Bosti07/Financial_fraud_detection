@@ -65,11 +65,40 @@ def load_prediction_models(model_file):
 
 
 def main():
-    st.title(""" 
-        **_Frapp: Fraud Detection Web Application_** :credit_card: 🕵️‍♂️
-    """)
+    #st.markdown("""<h1 style='text-align: center; color: White;'>Welcome to Frapp</h1>
+    #	           <h1 style='text-align: center; '>🕵️‍♂️</h1>""", unsafe_allow_html=True)
+    #st.markdown("<h1 style='text-align: center; color: Black;'>🕵️‍♂️</h1>", unsafe_allow_html=True)
+    #st.markdown("<h1 style='text-align: center; color: Black;'>:shipit:</h1>", unsafe_allow_html=True)
+   # st.title(""" 
+   #     **_Welcome to Frapp_**
+   #        	        \n🕵️‍♂️
+   # """)
+   # col1, col2, col3 = st.sidebar.beta_columns([1,1,1])
 
-    st.sidebar.header('Home🏠')
+    #with col1:
+   # 	st.write("")
+
+    #with col2:
+   # 	st.write("⚠️")
+
+    #with col3:
+   # 	st.write("")
+
+    col1, col2, col3 = st.sidebar.beta_columns([1,1,1])
+
+    with col1:
+    	st.write("")
+
+    with col2:
+    	st.markdown("""<h2 style='text-align: center; color: Black;'>⚠️</h1>
+    		           <h1 style='text-align: center; color: White;'>Frapp</h1>""", unsafe_allow_html=True)
+
+    with col3:
+    	#st.header('Frapp')
+    	st.write("")
+    #st.sidebar.write("Fraud Detection Web Application")
+    st.sidebar.markdown("<h4 style='color: White;'>Fraud Detection Web Application</h4>", unsafe_allow_html=True)
+    #st.sidebar.header('Frapp')
     menu = ["Home","Train and Test", "Make Prediction"]
     choice = st.sidebar.selectbox("Menu",menu)
     
@@ -93,28 +122,24 @@ def main():
             st.pyplot()
 
     if choice == "Home":
-    	print("Home")
-    	#optional = st.sidebar.beta_expander(" ⚠️ Variables Need ⚠️", False)
-    	#optional.write("step")
-    	#optional.write("type")
-    	#optional.write("amount")
-    	#optional.write("nameOrig")
-    	#optional.write("nameDest")
-    	#optional.write("oldBalanceOrig")
-    	#optional.write("newBalanceOrig")
-    	#optional.write("oldBalanceDest")
-    	#optional.write("newbalanceDest")
-    	#optional.write("transaction_id")
-    	#optional.write("isFraud")
-    	#optional.warning(" ⚠️ All the column names must be the same on variables need.")
-
-
-        
-    
+    	st.markdown("""<h1 style='text-align: center; color: White;'>Welcome to Frapp</h1>
+    		<h1 style='text-align: center; '>🕵️‍♂️</h1>""", unsafe_allow_html=True)
+    	st.markdown("Frapp is a fraud detection web application that offers to train and test and make predictions of your financial datasets. Imagine a platform making it easy for aspiring data scientists!", unsafe_allow_html=True)
+    	print("Home")            
 
     class_names = ['Genuine', 'Fraud']
     if choice == "Train and Test":
-        optional = st.sidebar.beta_expander(" ⚠️ Variables Need ⚠️", False)
+        st.markdown("""<h1 style='text-align: center; color: White;'>Train and test with Frapp!</h1>
+    		           <h1 style='text-align: center; '>🕵️‍♂️</h1>""", unsafe_allow_html=True)
+        st.markdown("""<h4 style='text-align: left;'>1. Check the file requirements and modify first your variables.</h4>
+        			   <h4 style='text-align: left;'>2. Upload your CSV file.</h4>
+        			   <h4 style='text-align: left;'>3. Choose from the algorithm provided.</h4>
+        			   <h4 style='text-align: left;'>4. Choose the metric you want to use to evaluate your model.</h4>
+        			   <h4 style='text-align: Center;'>Then it's done! Wait for the results to be displayed, it may take a while...</h4>
+
+        			""", unsafe_allow_html=True)
+
+        optional = st.sidebar.beta_expander("File requirements", False)
         optional.write("step")
         optional.write("type")
         optional.write("amount")
@@ -125,9 +150,9 @@ def main():
         optional.write("oldBalanceDest")
         optional.write("newbalanceDest")
         optional.write("transaction_id")
-        optional.write("isFraud")
-        optional.warning(" ⚠️ All the column names must be the same on variables need.")
-        st.subheader("Train and Test Section")
+        optional.write("isFraud(for train and test only)")
+        optional.warning("All the columns must be followed accordingly or the system may not be able to produce appropriate results.")
+        #st.subheader("Train and Test Section")
         #upload_file() 
         uploaded_file = st.sidebar.file_uploader(label="Upload your input CSV file", type=["csv"])
 
@@ -140,8 +165,12 @@ def main():
             try:
                
                 #input_df = read_file(uploaded_file)
+
                 input_df = pd.read_csv(uploaded_file)
                 input_df.drop(['isFlaggedFraud'], inplace = True, axis = 1)
+                st.write("")
+                st.write("")
+                st.write("")
                 st.subheader("Original Data")
                 st.dataframe(input_df.head(10)) 
                 st.write("The Dataset has",input_df.shape[0], "row", "and",input_df.shape[1], "columns." )
@@ -352,18 +381,15 @@ def main():
                 print(e)                
     
     if choice == "Make Prediction":
-        optional = st.sidebar.beta_expander(" ⚠️ Variables Need ⚠️", False)
-        optional.write("step")
-        optional.write("type")
-        optional.write("amount")
-        optional.write("nameOrig")
-        optional.write("nameDest")
-        optional.write("oldBalanceOrig")
-        optional.write("newBalanceOrig")
-        optional.write("oldBalanceDest")
-        optional.write("newbalanceDest")
-        optional.write("transaction_id")
-        optional.warning(" ⚠️ All the column names must be the same on variables need.")
+        st.markdown("""<h1 style='text-align: center; color: White;'>Predict fraud with Frapp!</h1>
+    		           <h1 style='text-align: center; '>🕵️‍♂️</h1>""", unsafe_allow_html=True)
+
+        st.markdown("""<h4 style='text-align: left;'>1. Check the file requirements and modify first your variables.</h4>
+        			   <h4 style='text-align: left;'>2. Upload your CSV file.</h4>
+        			   <h4 style='text-align: left;'>3. Your file will be scanned through our own model using XGBoost.</h4>
+					   <h4 style='text-align: Center;'>Then it's done! Wait for the results to be displayed, it may take a while...</h4>
+
+        			""", unsafe_allow_html=True)
 
         uploaded_file = st.sidebar.file_uploader(label="Upload your input CSV file", type=["csv"])
 
@@ -376,6 +402,9 @@ def main():
             try:
                 df1 = pd.read_csv(uploaded_file)
                 df1.drop(['isFraud', 'isFlaggedFraud'], inplace = True, axis=1)
+                st.write("")
+                st.write("")
+                st.write("")
                 st.subheader("Original Data")
                 st.dataframe(df1.head(10)) 
               
