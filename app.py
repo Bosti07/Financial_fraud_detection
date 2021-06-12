@@ -93,19 +93,20 @@ def main():
             st.pyplot()
 
     if choice == "Home":
-    	optional = st.sidebar.beta_expander(" ⚠️ Variables Need ⚠️", False)
-    	optional.write("step")
-    	optional.write("type")
-    	optional.write("amount")
-    	optional.write("nameOrig")
-    	optional.write("nameDest")
-    	optional.write("oldBalanceOrig")
-    	optional.write("newBalanceOrig")
-    	optional.write("oldBalanceDest")
-    	optional.write("newbalanceDest")
-    	optional.write("transaction_id")
-    	optional.write("isFraud")
-    	optional.warning(" ⚠️ All the column names must be the same on variables need.")
+    	print("Home")
+    	#optional = st.sidebar.beta_expander(" ⚠️ Variables Need ⚠️", False)
+    	#optional.write("step")
+    	#optional.write("type")
+    	#optional.write("amount")
+    	#optional.write("nameOrig")
+    	#optional.write("nameDest")
+    	#optional.write("oldBalanceOrig")
+    	#optional.write("newBalanceOrig")
+    	#optional.write("oldBalanceDest")
+    	#optional.write("newbalanceDest")
+    	#optional.write("transaction_id")
+    	#optional.write("isFraud")
+    	#optional.warning(" ⚠️ All the column names must be the same on variables need.")
 
 
         
@@ -113,6 +114,19 @@ def main():
 
     class_names = ['Genuine', 'Fraud']
     if choice == "Train and Test":
+        optional = st.sidebar.beta_expander(" ⚠️ Variables Need ⚠️", False)
+        optional.write("step")
+        optional.write("type")
+        optional.write("amount")
+        optional.write("nameOrig")
+        optional.write("nameDest")
+        optional.write("oldBalanceOrig")
+        optional.write("newBalanceOrig")
+        optional.write("oldBalanceDest")
+        optional.write("newbalanceDest")
+        optional.write("transaction_id")
+        optional.write("isFraud")
+        optional.warning(" ⚠️ All the column names must be the same on variables need.")
         st.subheader("Train and Test Section")
         #upload_file() 
         uploaded_file = st.sidebar.file_uploader(label="Upload your input CSV file", type=["csv"])
@@ -130,7 +144,7 @@ def main():
                 input_df.drop(['isFlaggedFraud'], inplace = True, axis = 1)
                 st.subheader("Original Data")
                 st.dataframe(input_df.head(10)) 
-                st.write("The **_Dataset_** has",input_df.shape[0], "row", "and",input_df.shape[1], "columns." )
+                st.write("The Dataset has",input_df.shape[0], "row", "and",input_df.shape[1], "columns." )
 
                 
                 alg=['Select a algorithm','LightGBM', 'Random Forest','XGBoost']
@@ -338,6 +352,18 @@ def main():
                 print(e)                
     
     if choice == "Make Prediction":
+        optional = st.sidebar.beta_expander(" ⚠️ Variables Need ⚠️", False)
+        optional.write("step")
+        optional.write("type")
+        optional.write("amount")
+        optional.write("nameOrig")
+        optional.write("nameDest")
+        optional.write("oldBalanceOrig")
+        optional.write("newBalanceOrig")
+        optional.write("oldBalanceDest")
+        optional.write("newbalanceDest")
+        optional.write("transaction_id")
+        optional.warning(" ⚠️ All the column names must be the same on variables need.")
 
         uploaded_file = st.sidebar.file_uploader(label="Upload your input CSV file", type=["csv"])
 
