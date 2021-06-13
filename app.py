@@ -310,7 +310,7 @@ def main():
 
 		                   #st.write('Test Accuracy')
 		                   test_acc = roc_auc_score(y_test, test_pred)
-		                   t = "<div><h2>Test Accuracy </h2> <h3><span class='highlight red'>{:.4}% </h3>".format(test_acc*100)
+		                   t = "<div><h2>Test Accuracy </h2> <h3><span class=' red'>{:.4}% </h3>".format(test_acc*100)
 		                   st.markdown(t, unsafe_allow_html=True)
 		                   st.write("")
 		                   st.write("")
@@ -372,7 +372,7 @@ def main():
                                                    max_depth = 5,
                         						   n_estimators = 300, 
                         						   colsample_bytree = 0.7, 
-                        						   gamma = 0.0,
+                        						   gamma = 0.0
                         						   )
 
 		                   model = model.fit(X_train_smote, y_train_smote, eval_metric=["error", "logloss"])
@@ -380,7 +380,7 @@ def main():
 		                #Model Prediction
 
 		                
-		                   test_pred = model.predict_proba(X_test)[:,1] >= 0.8
+		                   test_pred = (model.predict_proba(X_test)[:,1] >= 0.5).astype(int)
 		                 
 
 		            
@@ -494,4 +494,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-#p
+
