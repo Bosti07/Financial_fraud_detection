@@ -31,10 +31,19 @@ from lightgbm import LGBMClassifier
 import xgboost as xgb 
 from xgboost import XGBClassifier # XGBoost algorithm
 
+from load_css import local_css
+
 import joblib
 
 import warnings
 warnings.filterwarnings("ignore")
+
+
+local_css("style.css")
+ 
+#t = "<div>Hello there my <span class='highlight blue'>name <span class='bold'>yo</span> </span> is <span class='highlight red'>Fanilo <span class='bold'>Name</span></span></div>"
+
+#st.markdown(t, unsafe_allow_html=True)
 
 
 hide_streamlit_style = """
@@ -231,12 +240,17 @@ def main():
 		                   
 
 		                #Model Prediction
-		                   test_pred = (model.predict_proba(X_test)[:,1] >= 0.5).astype(int)
+		                   test_pred = (model.predict_proba(X_test)[:,1] >= 0.5).astype(int) 
 		                 
 		                   #Evaluate
-		                   st.write('Test Accuracy')
+		                   #st.write('Test Accuracy')
 		                   test_acc = roc_auc_score(y_test, test_pred)
-		                   st.write("**_Accuracy_**:  ", test_acc.round(3))
+		                   t = "<div><h2>Test Accuracy </h2> <h3><span class='highlight red'>{:.4}% </h3>".format(test_acc*100)  #class='bold'>yo</span> </span> is <span class='highlight red'>Fanilo <span class='bold'>Name</span></span></div>"
+		                   st.markdown(t, unsafe_allow_html=True)
+		                   st.write("")
+		                   st.write("")
+		                   #st.write("**_Accuracy_**:  ", test_acc.round(3))
+		                   #st.markdown("**_Accuracy_**:  {:.4}%".format(test_acc*100))
 		                  
 		                   
 		                   st.subheader("RESULTS:")
@@ -296,7 +310,11 @@ def main():
 
 		                   st.write('Test Accuracy')
 		                   test_acc = roc_auc_score(y_test, test_pred)
-		                   st.write("**_Accuracy_**:  ", test_acc.round(3))
+		                   t = "<div><h2>Test Accuracy </h2> <h3><span class='highlight red'>{:.4}% </h3>".format(test_acc*100)
+		                   st.markdown(t, unsafe_allow_html=True)
+		                   st.write("")
+		                   st.write("")
+		                   #st.write("**_Accuracy_**:  ", test_acc.round(3))
 
 		                   st.subheader("RESULTS:")		                  
 		                   result = pd.DataFrame({'transaction_id':X_test['transaction_id'],'actual':y_test['isFraud'], 'predicted':test_pred})
@@ -368,7 +386,12 @@ def main():
 		            
 		                   st.write('Test Accuracy')
 		                   test_acc = roc_auc_score(y_test, test_pred)
-		                   st.write("**_Accuracy_**:  ", test_acc.round(3))
+		                   t = "<div><h2>Test Accuracy </h2> <h3><span class='highlight red'>{:.4}% </h3>".format(test_acc*100)
+		                   st.markdown(t, unsafe_allow_html=True)
+		                   st.write("")
+		                   st.write("")
+
+		                   #st.write("**_Accuracy_**:  ", test_acc.round(3))
 
 		                   st.subheader("RESULTS:")
 
