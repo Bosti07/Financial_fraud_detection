@@ -96,8 +96,7 @@ def main():
     with col3:
     	#st.header('Frapp')
     	st.write("")
-    #st.sidebar.write("Fraud Detection Web Application")
-    st.sidebar.markdown("<h4 style='text-align: center; color: Black;'>Fraud Detection Web Application</h4>", unsafe_allow_html=True)
+    st.sidebar.markdown("<h4 style=' text-align: center; color: Black;'>Fraud Detection Web Application</h4>", unsafe_allow_html=True)
     #st.sidebar.header('Frapp')
     menu = ["Home","Train and Test", "Make Prediction"]
     choice = st.sidebar.selectbox("Menu",menu)
@@ -133,7 +132,7 @@ def main():
     		           <h1 style='text-align: center; '>🕵️‍♂️</h1>""", unsafe_allow_html=True)
         st.markdown("""<h4 style='text-align: left;'>1. Check the file requirements and modify first your variables.</h4>
         			   <h4 style='text-align: left;'>2. Upload your CSV file.</h4>
-        			   <h4 style='text-align: left;'>3. Choose from the algorithms provided.</h4>
+        			   <h4 style='text-align: left;'>3. Choose from the algorithm provided.</h4>
         			   <h4 style='text-align: left;'>4. Choose the metric you want to use to evaluate your model.</h4>
         			   <h4 style='text-align: Center;'>Then it's done! Wait for the results to be displayed, it may take a while...</h4>
 
@@ -154,7 +153,7 @@ def main():
         optional.warning("All the columns must be followed accordingly or the system may not be able to produce appropriate results.")
         #st.subheader("Train and Test Section")
         #upload_file() 
-        uploaded_file = st.sidebar.file_uploader(label="Upload CSV file", type=["csv"])
+        uploaded_file = st.sidebar.file_uploader(label="Upload your input CSV file", type=["csv"])
 
         
         if uploaded_file is not None:
@@ -172,7 +171,13 @@ def main():
                 st.write("")
                 st.write("")
                 st.subheader("Original Data")
-                st.dataframe(input_df.head(10)) 
+                optional = st.beta_expander("Original Data", False)
+                optional.dataframe(input_df.head(10)) 
+                #optional.write("step")
+                #optional.write("type")
+                #optional.write("amount")
+                #st.subheader("Original Data")
+                #st.dataframe(input_df.head(10)) 
                 st.write("The Dataset has",input_df.shape[0], "rows", "and",input_df.shape[1], "columns." )
 
                 
@@ -181,8 +186,8 @@ def main():
 
                 
                 if classifier=='LightGBM':                	
-                	metrics = st.sidebar.multiselect("Select metrics",('Confustion Matrix', 'ROC Curve'))
-                	if st.sidebar.button("Start"):
+                	metrics = st.sidebar.multiselect("What metrics to plot? 📊",('Confustion Matrix', 'ROC Curve'))
+                	if st.sidebar.button("Start 👨‍🔬"):
                 		with st.spinner("Please wait while the process is ongoing."):
 		                   input_df[['step','amount','oldBalanceOrig', 'oldBalanceDest', 'newBalanceOrig', 'newBalanceDest']] = StandardScaler().fit_transform(input_df[['step','amount','oldBalanceOrig','oldBalanceDest','newBalanceOrig','newBalanceDest']])
 
@@ -242,8 +247,8 @@ def main():
 
 
                 if classifier=='Random Forest':
-                	metrics = st.sidebar.multiselect("Select metrics",('Confustion Matrix', 'ROC Curve'))
-                	if st.sidebar.button("Start"):
+                	metrics = st.sidebar.multiselect("What metrics to plot? 📊",('Confustion Matrix', 'ROC Curve'))
+                	if st.sidebar.button("Start 👨‍🔬"):
                 		with st.spinner("Please wait while the process is ongoing."):
 
 		                   input_df[['step','amount','oldBalanceOrig', 'oldBalanceDest', 'newBalanceOrig', 'newBalanceDest']] = StandardScaler().fit_transform(input_df[['step','amount','oldBalanceOrig','oldBalanceDest','newBalanceOrig','newBalanceDest']])
@@ -302,8 +307,8 @@ def main():
 
 
                 if classifier=='XGBoost':
-                	metrics = st.sidebar.multiselect("Select metrics",('Confustion Matrix', 'ROC Curve'))
-                	if st.sidebar.button("Start"):
+                	metrics = st.sidebar.multiselect("What metrics to plot? 📊",('Confustion Matrix', 'ROC Curve'))
+                	if st.sidebar.button("Start 👨‍🔬"):
                 		with st.spinner("Please wait while the process is ongoing."):
 	               	
 		                  
@@ -390,7 +395,7 @@ def main():
 
         			""", unsafe_allow_html=True)
 
-        uploaded_file = st.sidebar.file_uploader(label="Upload CSV file", type=["csv"])
+        uploaded_file = st.sidebar.file_uploader(label="Upload your input CSV file", type=["csv"])
 
 
         if uploaded_file is not None:
@@ -405,7 +410,9 @@ def main():
                 st.write("")
                 st.write("")
                 st.subheader("Original Data")
-                st.dataframe(df1.head(10)) 
+                optional = st.beta_expander("Original Data", False)
+                optional.dataframe(df1.head(10)) 
+                #st.dataframe(df1.head(10)) 
               
 
                 if st.sidebar.button("Start"):
