@@ -177,7 +177,7 @@ def main():
 
                 
                 alg=['Select a algorithm','LightGBM', 'Random Forest','XGBoost']
-                classifier = st.sidebar.selectbox('Select algorithm', alg)
+                classifier = st.sidebar.selectbox('Choose an option', alg)
 
                 
                 if classifier=='LightGBM':                	
