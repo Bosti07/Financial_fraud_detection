@@ -176,8 +176,8 @@ def main():
                 st.write("The Dataset has",input_df.shape[0], "rows", "and",input_df.shape[1], "columns." )
 
                 
-                alg=['Select a algorithm','LightGBM', 'Random Forest','XGBoost']
-                classifier = st.sidebar.selectbox('Choose an option', alg)
+                alg=['Choose an option','LightGBM', 'Random Forest','XGBoost']
+                classifier = st.sidebar.selectbox('Select algorithm', alg)
 
                 
                 if classifier=='LightGBM':                	
