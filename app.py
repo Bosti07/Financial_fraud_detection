@@ -132,7 +132,7 @@ def main():
     		           <h1 style='text-align: center; '>🕵️‍♂️</h1>""", unsafe_allow_html=True)
         st.markdown("""<h4 style='text-align: left;'>1. Check the file requirements and modify first your variables.</h4>
         			   <h4 style='text-align: left;'>2. Upload your CSV file.</h4>
-        			   <h4 style='text-align: left;'>3. Choose from the algorithm provided.</h4>
+        			   <h4 style='text-align: left;'>3. Choose from the algorithms provided.</h4>
         			   <h4 style='text-align: left;'>4. Choose the metric you want to use to evaluate your model.</h4>
         			   <h4 style='text-align: Center;'>Then it's done! Wait for the results to be displayed, it may take a while...</h4>
 
