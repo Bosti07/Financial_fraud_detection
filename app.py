@@ -153,7 +153,7 @@ def main():
         optional.warning("All the columns must be followed accordingly or the system may not be able to produce appropriate results.")
         #st.subheader("Train and Test Section")
         #upload_file() 
-        uploaded_file = st.sidebar.file_uploader(label="Upload your input CSV file", type=["csv"])
+        uploaded_file = st.sidebar.file_uploader(label="Upload CSV file", type=["csv"])
 
         
         if uploaded_file is not None:
@@ -186,8 +186,8 @@ def main():
 
                 
                 if classifier=='LightGBM':                	
-                	metrics = st.sidebar.multiselect("What metrics to plot? 📊",('Confustion Matrix', 'ROC Curve'))
-                	if st.sidebar.button("Start 👨‍🔬"):
+                	metrics = st.sidebar.multiselect("Select metric",('Confustion Matrix', 'ROC Curve'))
+                	if st.sidebar.button("Start"):
                 		with st.spinner("Please wait while the process is ongoing."):
 		                   input_df[['step','amount','oldBalanceOrig', 'oldBalanceDest', 'newBalanceOrig', 'newBalanceDest']] = StandardScaler().fit_transform(input_df[['step','amount','oldBalanceOrig','oldBalanceDest','newBalanceOrig','newBalanceDest']])
 
@@ -247,8 +247,8 @@ def main():
 
 
                 if classifier=='Random Forest':
-                	metrics = st.sidebar.multiselect("What metrics to plot? 📊",('Confustion Matrix', 'ROC Curve'))
-                	if st.sidebar.button("Start 👨‍🔬"):
+                	metrics = st.sidebar.multiselect("Select metric",('Confustion Matrix', 'ROC Curve'))
+                	if st.sidebar.button("Start"):
                 		with st.spinner("Please wait while the process is ongoing."):
 
 		                   input_df[['step','amount','oldBalanceOrig', 'oldBalanceDest', 'newBalanceOrig', 'newBalanceDest']] = StandardScaler().fit_transform(input_df[['step','amount','oldBalanceOrig','oldBalanceDest','newBalanceOrig','newBalanceDest']])
@@ -307,8 +307,8 @@ def main():
 
 
                 if classifier=='XGBoost':
-                	metrics = st.sidebar.multiselect("What metrics to plot? 📊",('Confustion Matrix', 'ROC Curve'))
-                	if st.sidebar.button("Start 👨‍🔬"):
+                	metrics = st.sidebar.multiselect("Select metric",('Confustion Matrix', 'ROC Curve'))
+                	if st.sidebar.button("Start"):
                 		with st.spinner("Please wait while the process is ongoing."):
 	               	
 		                  
@@ -395,7 +395,7 @@ def main():
 
         			""", unsafe_allow_html=True)
 
-        uploaded_file = st.sidebar.file_uploader(label="Upload your input CSV file", type=["csv"])
+        uploaded_file = st.sidebar.file_uploader(label="Upload CSV file", type=["csv"])
 
 
         if uploaded_file is not None:
