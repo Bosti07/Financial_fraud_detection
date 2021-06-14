@@ -310,7 +310,7 @@ def main():
 
 		                   #st.write('Test Accuracy')
 		                   test_acc = roc_auc_score(y_test, test_pred)
-		                   t = "<div><h2>Test Accuracy </h2> <h3><span class=' red'>{:.4}% </h3>".format(test_acc*100)
+		                   t = "<div><h2>Test Accuracy </h2> <h3><span class='highlight red'>{:.4}% </h3>".format(test_acc*100)
 		                   st.markdown(t, unsafe_allow_html=True)
 		                   st.write("")
 		                   st.write("")
